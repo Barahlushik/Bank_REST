@@ -1,0 +1,6 @@
+api:
+  base-path: /v1
+
+server:
+  servlet:
+    context-path: /test
