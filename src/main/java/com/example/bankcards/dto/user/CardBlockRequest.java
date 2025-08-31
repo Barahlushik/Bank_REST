@@ -1,4 +1,9 @@
-package com.example.bankcards.dto;
+package com.example.bankcards.dto.user;
 
-public class CardBlockRequest {
-}
+import jakarta.validation.constraints.NotBlank;
+
+public record CardBlockRequest(
+        @NotBlank(message = "Reason required")
+        String reason
+) {}
+

@@ -1,4 +1,8 @@
-package com.example.bankcards.dto;
+package com.example.bankcards.dto.user;
 
-public class BalanceResponse {
-}
+import java.math.BigDecimal;
+
+public record BalanceResponse(
+        Long cardId,
+        BigDecimal balance
+) {}

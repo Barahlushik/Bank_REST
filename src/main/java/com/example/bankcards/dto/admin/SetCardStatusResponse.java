@@ -1,4 +1,9 @@
-package com.example.bankcards.dto;
+package com.example.bankcards.dto.admin;
 
-public class SetCardStatusResponse {
-}
+import com.example.bankcards.entity.enums.CardStatus;
+
+public record SetCardStatusResponse(
+        Long cardId,
+        CardStatus oldStatus,
+        CardStatus newStatus
+) {}

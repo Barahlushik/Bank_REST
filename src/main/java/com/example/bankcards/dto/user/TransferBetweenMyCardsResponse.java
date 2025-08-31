@@ -1,4 +1,10 @@
-package com.example.bankcards.dto;
+package com.example.bankcards.dto.user;
 
-public class TransferBetweenMyCardsResponse {
-}
+import java.math.BigDecimal;
+
+public record TransferBetweenMyCardsResponse(
+        Long fromCardId,
+        Long toCardId,
+        BigDecimal amount,
+        String status
+) {}
