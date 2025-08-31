@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-insert-users
+      author: barahlush
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username,   value: "admin1" }
+              - column: { name: password,   value: "$2a$10$hashForAdmin1" }
+              - column: { name: name,       value: "Ivan" }
+              - column: { name: surname,    value: "Petrov" }
+              - column: { name: birth_date, valueDate: "1985-01-01" }
+              - column: { name: created_at, valueDate: "2025-01-01T10:00:00" }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username,   value: "admin2" }
+              - column: { name: password,   value: "$2a$10$hashForAdmin2" }
+              - column: { name: name,       value: "Pavel" }
+              - column: { name: surname,    value: "Ivanov" }
+              - column: { name: birth_date, valueDate: "1990-02-02" }
+              - column: { name: created_at, valueDate: "2025-01-02T11:00:00" }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username,   value: "user1" }
+              - column: { name: password,   value: "$2a$10$hashForUser1" }
+              - column: { name: name,       value: "Sergey" }
+              - column: { name: surname,    value: "Sidorov" }
+              - column: { name: birth_date, valueDate: "1995-03-03" }
+              - column: { name: created_at, valueDate: "2025-01-03T12:00:00" }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username,   value: "user2" }
+              - column: { name: password,   value: "$2a$10$hashForUser2" }
+              - column: { name: name,       value: "Anna" }
+              - column: { name: surname,    value: "Smirnova" }
+              - column: { name: birth_date, valueDate: "2000-04-04" }
+              - column: { name: created_at, valueDate: "2025-01-04T13:00:00" }
