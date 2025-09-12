@@ -42,3 +42,21 @@ databaseChangeLog:
                   type: TIMESTAMP
                   constraints:
                     nullable: false
+              - column:
+                  name: role_id
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: users
+            indexName: idx_users_username
+            unique: true
+            columns:
+              - column:
+                  name: username
+        - addForeignKeyConstraint:
+            baseTableName: users
+            baseColumnNames: role_id
+            referencedTableName: roles
+            referencedColumnNames: id
+            constraintName: fk_users_role

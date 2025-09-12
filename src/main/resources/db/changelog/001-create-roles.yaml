@@ -19,3 +19,10 @@ databaseChangeLog:
                   type: VARCHAR(50)
                   constraints:
                     nullable: false
+        - createIndex:
+            tableName: roles
+            indexName: idx_roles_role
+            unique: true
+            columns:
+              - column:
+                  name: role
