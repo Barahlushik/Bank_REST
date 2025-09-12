@@ -1,11 +1,18 @@
 package com.example.bankcards.entity;
 
 
+import com.example.bankcards.entity.enums.RoleType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
 
 
 @Entity
@@ -15,7 +22,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User{
+public class User implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -31,6 +38,11 @@ public class User{
     LocalDate birthDate;
     @Column(name="created_at", nullable = false)
     LocalDateTime createdAt;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
+    Role role;
 
     @PrePersist
     void onCreate() {
@@ -51,5 +63,26 @@ public class User{
     public String toString() {
         return "User{id=" + id + "}";
     }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.getRole().name()));
+    }
 
+    @Override
+    public String getPassword() {
+        return passwordHash;
+    }
+
+    public boolean isAdmin() {
+        return role.getRole().equals(RoleType.ADMIN);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+    @Override
+    public boolean isEnabled() { return true; }
 }

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -23,10 +24,10 @@ public class RefreshToken {
     @JoinColumn(name = "user_id", nullable = false)
     User user;
 
-    @Column(name = "token_id", nullable = false, length = 64)   // публичный идентификатор
+    @Column(name = "token_id", nullable = false, length = 64)
     String tokenId;
 
-    @Column(name = "secret_hash", nullable = false, length = 255) // hash(secret)
+    @Column(name = "secret_hash", nullable = false, length = 255)
     String secretHash;
 
     @Column(name = "issued_at", nullable = false)

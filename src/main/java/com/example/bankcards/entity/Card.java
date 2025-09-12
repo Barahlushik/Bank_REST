@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Table(name="cards")
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -36,7 +37,8 @@ public class Card {
     CardStatus status;
 
     @Column(name = "balance", nullable = false, precision = 19, scale = 2)
-    BigDecimal balance;
+    @Builder.Default
+    private BigDecimal balance = BigDecimal.ZERO;
 
     @Column(nullable = false, precision = 19, scale = 2)
     BigDecimal hold;
