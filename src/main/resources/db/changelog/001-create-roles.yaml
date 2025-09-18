@@ -1,17 +1,19 @@
 databaseChangeLog:
   - changeSet:
-      id: 002-create-roles
+      id: 001-create-roles
       author: barahlush
       changes:
         - createSequence:
             sequenceName: role_id_seq
             startValue: 1
+
         - createTable:
             tableName: roles
             columns:
               - column:
                   name: id
                   type: INTEGER
+                  defaultValueSequenceNext: role_id_seq
                   constraints:
                     primaryKey: true
               - column:
@@ -19,6 +21,7 @@ databaseChangeLog:
                   type: VARCHAR(50)
                   constraints:
                     nullable: false
+
         - createIndex:
             tableName: roles
             indexName: idx_roles_role

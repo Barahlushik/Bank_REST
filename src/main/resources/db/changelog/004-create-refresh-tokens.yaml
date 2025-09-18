@@ -51,3 +51,16 @@ databaseChangeLog:
             referencedTableName: users
             referencedColumnNames: id
             constraintName: fk_refresh_tokens_user
+        - createIndex:
+            tableName: refresh_tokens
+            indexName: idx_refresh_tokens_token_id
+            unique: true
+            columns:
+              - column:
+                  name: token_id
+        - createIndex:
+            tableName: refresh_tokens
+            indexName: idx_refresh_tokens_user
+            columns:
+              - column:
+                  name: user_id

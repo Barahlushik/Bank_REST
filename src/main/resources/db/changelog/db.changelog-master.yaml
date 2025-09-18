@@ -1,15 +1,17 @@
 databaseChangeLog:
   - include:
-      file: src/main/resources/db/changelog/001-create-users.yaml
+      file: db/changelog/001-create-roles.yaml
   - include:
-      file: src/main/resources/db/changelog/002-create-roles.yaml
+      file: db/changelog/002-create-users.yaml
   - include:
-      file: src/main/resources/db/changelog/003-create-cards.yaml
+      file: db/changelog/003-create-cards.yaml
   - include:
-      file: src/main/resources/db/changelog/004-create-refresh-tokens.yaml
+      file: db/changelog/004-create-refresh-tokens.yaml
   - include:
-      file: src/main/resources/db/changelog/005-create-transfers.yaml
+      file: db/changelog/005-create-transfers.yaml
   - include:
-      file: src/main/resources/db/changelog/006-insert-roles.yaml
+      file: db/changelog/006-insert-roles.yaml
   - include:
-      file: src/main/resources/db/changelog/007-insert-users.yaml
+      file: db/changelog/007-insert-users.yaml
+  - include:
+      file: db/changelog/008-create-card-block.yaml

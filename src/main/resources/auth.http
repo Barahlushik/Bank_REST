@@ -1,0 +1,31 @@
+### Регистрация
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "pidarok",
+  "password": "testpass",
+  "email": "test@example.com",
+  "name": "Ivan",
+  "surname": "Petrov",
+  "birthDate": "2000-01-01"
+}
+
+### Логин
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "pidarok",
+  "password": "testpass"
+}
+
+> {% client.global.set("accessToken", response.body.accessToken); %}
+
+### Получить список карт (требует ROLE_USER)
+GET http://localhost:8080/user/cards
+Authorization: Bearer {{accessToken}}
+
+### Баланс конкретной карты
+GET http://localhost:8080/user/cards/100/balance
+Authorization: Bearer {{accessToken}}

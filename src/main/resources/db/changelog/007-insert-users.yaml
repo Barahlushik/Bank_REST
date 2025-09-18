@@ -7,38 +7,54 @@ databaseChangeLog:
             tableName: users
             columns:
               - column: { name: username,   value: "admin1" }
-              - column: { name: password,   value: "$2a$10$hashForAdmin1" }
+              # пароль = admin123
+              - column: { name: password,   value: "$2a$10$fw/EfNBJDCp/JVdnoosUweod578flkZNQ1pfAWC5Mg5vSnwvnFBo2" }
               - column: { name: name,       value: "Ivan" }
               - column: { name: surname,    value: "Petrov" }
               - column: { name: birth_date, valueDate: "1985-01-01" }
               - column: { name: created_at, valueDate: "2025-01-01T10:00:00" }
+              - column:
+                  name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE role = 'ADMIN')
 
         - insert:
             tableName: users
             columns:
               - column: { name: username,   value: "admin2" }
-              - column: { name: password,   value: "$2a$10$hashForAdmin2" }
+              # пароль = admin456
+              - column: { name: password,   value: "$2a$10$kyIqJ4bfZzIiEp9mJXk8LO9Y2upVZ3T.JmmkPOnegKnCU85vIzGPS" }
               - column: { name: name,       value: "Pavel" }
               - column: { name: surname,    value: "Ivanov" }
               - column: { name: birth_date, valueDate: "1990-02-02" }
               - column: { name: created_at, valueDate: "2025-01-02T11:00:00" }
+              - column:
+                  name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE role = 'ADMIN')
 
         - insert:
             tableName: users
             columns:
               - column: { name: username,   value: "user1" }
-              - column: { name: password,   value: "$2a$10$hashForUser1" }
+              # пароль = user123
+              - column: { name: password,   value: "$2a$10$2rCXoYnEl3ftVO2kCT2xderriRu7GUZ3J1cSwutp0x5FlOEuRpdq." }
               - column: { name: name,       value: "Sergey" }
               - column: { name: surname,    value: "Sidorov" }
               - column: { name: birth_date, valueDate: "1995-03-03" }
               - column: { name: created_at, valueDate: "2025-01-03T12:00:00" }
+              - column:
+                  name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE role = 'USER')
 
         - insert:
             tableName: users
             columns:
               - column: { name: username,   value: "user2" }
-              - column: { name: password,   value: "$2a$10$hashForUser2" }
+              # пароль = user456
+              - column: { name: password,   value: "$2a$10$6FVUI4307FL1tpbDQ3/H0u0vOeKKzaUzDQJ8xGHEM./7Pi9ckqRx6" }
               - column: { name: name,       value: "Anna" }
               - column: { name: surname,    value: "Smirnova" }
               - column: { name: birth_date, valueDate: "2000-04-04" }
               - column: { name: created_at, valueDate: "2025-01-04T13:00:00" }
+              - column:
+                  name: role_id
+                  valueComputed: (SELECT id FROM roles WHERE role = 'USER')

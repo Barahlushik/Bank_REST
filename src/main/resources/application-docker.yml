@@ -1,12 +1,10 @@
-
 spring:
-  config:
-    import: file:.env[.properties]
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: none
@@ -15,18 +13,24 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
   liquibase:
-    drop-first: true
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
-    contexts: test
+    contexts: docker
     default-schema: public
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST}
+      port: ${SPRING_DATA_REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
+server:
+  port: 8080
 
 app:
   security:
-    allowedSources: ["*"]
-    allowedMethods: [GET, POST, PUT, DELETE, OPTIONS]
-    allowedHeaders: ["*"]
     ignoredUrls:
       - /swagger-ui/**
       - /swagger-resources/**
