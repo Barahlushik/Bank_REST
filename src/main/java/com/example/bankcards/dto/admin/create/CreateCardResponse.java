@@ -16,39 +16,20 @@ public record CreateCardResponse(
                 description = "Уникальный идентификатор созданной карты",
                 example = "5001"
         )
-        Long cardId,
+        Long id,
 
         @Schema(
-                description = "Тип карты",
-                example = "DEBIT",
-                implementation = CardType.class
+                description = "Флаг успешности операции",
+                example = "true"
         )
-        CardType type,
-
-        @Schema(
-                description = "Номер карты (может быть замаскирован при возврате)",
-                example = "411111******1111"
-        )
-        String number,
-
-        @Schema(
-                description = "Дата истечения срока действия карты",
-                example = "2030-12-31",
-                type = "string",
-                format = "date"
-        )
-        LocalDate expiration,
+        boolean successful,
 
         @Schema(
                 description = "Текущий статус карты (например, ACTIVE, BLOCKED, EXPIRED)",
                 example = "ACTIVE",
                 implementation = CardStatus.class
         )
-        CardStatus status,
+        CardStatus status
 
-        @Schema(
-                description = "Текущий баланс карты",
-                example = "1500.50"
-        )
-        BigDecimal balance
+
 ) {}

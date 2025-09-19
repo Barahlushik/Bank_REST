@@ -24,7 +24,7 @@ public interface CardMapper {
     @Mapping(target = "number", expression = "java(maskCardNumber(card.getNumber()))")
     CardDto toDto(Card card);
 
-    @Mapping(target = "number", expression = "java(maskCardNumber(card.getNumber()))")
+    @Mapping(target = "successful", expression = "java(card.getId() != null)")
     CreateCardResponse toCreateResponse(Card card);
 
     @Mapping(target = "number", expression = "java(maskCardNumber(card.getNumber()))")

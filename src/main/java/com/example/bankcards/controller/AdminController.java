@@ -67,7 +67,7 @@ public class AdminController {
     public ResponseEntity<CreateCardResponse> create(@RequestBody @Valid CreateCardRequest req) {
         CreateCardResponse created = cardService.create(req);
         return ResponseEntity
-                .created(URI.create(String.format("/admin/cards/%d", created.cardId())))
+                .created(URI.create(String.format("/admin/cards/%d", created.id())))
                 .body(created);
     }
 
